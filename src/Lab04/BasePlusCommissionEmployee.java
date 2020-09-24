@@ -3,7 +3,8 @@ package Lab04;
 public class BasePlusCommissionEmployee extends CommissionEmployee {
     private double baseSalary;
 
-    public BasePlusCommissionEmployee(String firstName, String lastName, String socialSecurityNumber, double grossSales, double commissionRate, double baseSalary) {
+    public BasePlusCommissionEmployee(String firstName, String lastName, String socialSecurityNumber,
+                                      double grossSales, double commissionRate, double baseSalary) {
         super(firstName, lastName, socialSecurityNumber, grossSales, commissionRate);
 
         if (baseSalary < 0.0)
@@ -66,6 +67,6 @@ public class BasePlusCommissionEmployee extends CommissionEmployee {
 
     @Override
     public String toString() {
-        return String.format(super.toString());
+        return String.format("BasePlusCommissionEmployee%n%n%sBase Salary: %.2f%n", super.toString(), getBaseSalary());
     }
 }
