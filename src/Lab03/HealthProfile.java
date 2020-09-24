@@ -6,20 +6,20 @@ public class HealthProfile {
     private String gender;
 
     private int day;
-    private int year;
     private int month;
+    private int year;
+
+    private int ageInYear;
 
     private double heightInInch;
     private double weightInPounds;
-
-    private double heartRate;
-    private double BMI;
 
     public HealthProfile(String firstName, String lastName, String gender,
                          int day, int month, int year, double heightInInch, double weightInPounds) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+
         this.day = day;
         this.year = year;
         this.month = month;
@@ -28,21 +28,14 @@ public class HealthProfile {
         this.weightInPounds = weightInPounds;
     }
 
-    public void heartRate (int year) {
-        int ageInYear = year - 2020;
-        heartRate = 220 - ageInYear;
+    public double getHeartRate (int year) {
+        ageInYear = year - 2020;
+        return 220 - ageInYear;
     }
 
-    public double getHeartRate() {
-        return heartRate;
-    }
 
-    public void BMI (double heightInInch, double weightInPounds) {
-        BMI = ( weightInPounds * 703 ) / heightInInch * heightInInch;
-    }
-
-    public double getBMI () {
-        return BMI;
+    public double getBMI (double heightInInch, double weightInPounds) {
+        return  ( weightInPounds * 703 ) / heightInInch * heightInInch;
     }
 
     public String getFirstName() {
@@ -83,15 +76,16 @@ public class HealthProfile {
 
     @Override
     public String toString() {
-        return "HealthProfile{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", Date of birth='" + day + "/" + month + "/" + year +
-                ", heightInInch=" + heightInInch +
-                ", weightInPounds=" + weightInPounds +
-                ", BMI= " + getBMI() +
-                ", Max Heart Rate= " + getHeartRate() +
+        return "\nHealthProfile{" +
+                "firstName ='" + firstName + '\'' +
+                ", lastName ='" + lastName + '\'' +
+                ", gender ='" + gender + '\'' +
+                ", Date of birth ='" + day + "/" + month + "/" + year + '\'' +
+                ", heightInInch ='" + heightInInch + '\'' +
+                ", weightInPounds ='" + weightInPounds + '\'' +
+                ", Age in year ='" + ageInYear + '\'' +
+                ", BMI ='" + getBMI(heightInInch,weightInPounds) + '\'' +
+                ", Max Heart Rate ='" + getHeartRate(year) + '\'' +
                 '}';
     }
 }
